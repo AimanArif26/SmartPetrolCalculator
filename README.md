@@ -45,4 +45,4 @@ fuel subsidy for eligible users.
 <img width="331" height="469" alt="image" src="https://github.com/user-attachments/assets/815e75b3-56ce-4aa6-a945-340194b700cf" />
 
 ## License
-© 2025 Your Name. All Rights Reserved.
+© 2026 AHMAD AIMAN ARIF BIN AHMAD ALIAS. All Rights Reserved.
