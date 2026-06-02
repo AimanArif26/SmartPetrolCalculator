@@ -26,7 +26,7 @@ public class AboutActivity extends AppCompatActivity {
         TextView tvGithub = findViewById(R.id.tvGithub);
         tvGithub.setOnClickListener(v -> {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://github.com/yourusername/yourrepo"));
+                    Uri.parse("https://github.com/AimanArif26/SmartPetrolCalculator"));
             startActivity(browserIntent);
         });
     }
