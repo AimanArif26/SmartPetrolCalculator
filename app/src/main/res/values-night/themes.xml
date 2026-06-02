@@ -1,0 +1,6 @@
+<resources>
+    <style name="Base.Theme.SmartPetrolCalculator" parent="Theme.Material3.Light.NoActionBar">
+    </style>
+
+    <style name="Theme.SmartPetrolCalculator" parent="Base.Theme.SmartPetrolCalculator" />
+</resources>
