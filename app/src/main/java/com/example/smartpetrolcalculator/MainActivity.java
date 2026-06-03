@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         String priceStr = etPrice.getText().toString().trim();
         String usageStr = etUsage.getText().toString().trim();
 
+        // Check for empty fields
         if (priceStr.isEmpty() || usageStr.isEmpty()) {
             tvCost.setText("Please fill in all fields.");
             tvRebate.setText("");
@@ -80,21 +81,42 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        double price = Double.parseDouble(priceStr);
-        double usage = Double.parseDouble(usageStr);
+        // Check for valid numbers
+        double price, usage;
+        try {
+            price = Double.parseDouble(priceStr);
+            usage = Double.parseDouble(usageStr);
+        } catch (NumberFormatException e) {
+            tvCost.setText("Please enter valid numbers.");
+            tvRebate.setText("");
+            tvFinal.setText("");
+            return;
+        }
+
+        // Check for zero or negative values
+        if (price <= 0 || usage <= 0) {
+            tvCost.setText("Please enter values greater than zero.");
+            tvRebate.setText("");
+            tvFinal.setText("");
+            return;
+        }
+
         String petrol = spPetrol.getSelectedItem().toString();
 
         double totalCost = price * usage;
         double rebate = 0;
 
+        // Calculate BUDI rebate only for RON95 and eligible users
         if (petrol.equals("RON95") && rbYes.isChecked()) {
             rebate = usage * 1.99;
+            tvRebate.setText("BUDI Rebate: RM " + String.format("%.2f", rebate));
+        } else {
+            tvRebate.setText("BUDI Rebate: Not applicable");
         }
 
         double totalSaving = totalCost - rebate;
 
         tvCost.setText("Total Petrol Cost: RM " + String.format("%.2f", totalCost));
-        tvRebate.setText("BUDI Rebate: RM " + String.format("%.2f", rebate));
         tvFinal.setText("Total Saving: RM " + String.format("%.2f", totalSaving));
     }
 }
