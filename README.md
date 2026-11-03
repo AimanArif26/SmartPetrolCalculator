@@ -1,13 +1,10 @@
 # Smart Petrol Cost Calculator with BUDI MADANI Rebate
 
-A mobile application developed for ICT602 Mobile Technology assignment.
-This app estimates total petrol costs in Malaysia and applies the BUDI MADANI 
-fuel subsidy for eligible users.
+An Android app that estimates total petrol costs in Malaysia and applies the BUDI MADANI
+fuel subsidy for eligible users. Built as a project for my Mobile Technology course.
 
-## Author Information
-- **Name: AHMAD AIMAN ARIF BIN AHMAD ALIAS**
-- **Matric No: 2025189997**
-- **Course: ICT602-Mobile Technology** 
+## Author
+Ahmad Aiman Arif bin Ahmad Alias
 
 ## Features
 - Select petrol type (RON95, RON97, Diesel)
