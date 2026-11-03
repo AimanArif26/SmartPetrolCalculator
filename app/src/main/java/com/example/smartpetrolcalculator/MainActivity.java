@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 
 public class MainActivity extends AppCompatActivity {
-
     Spinner spPetrol;
     EditText etPrice, etUsage;
     RadioButton rbYes;
@@ -27,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Setup Material Toolbar
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -40,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         tvFinal = findViewById(R.id.tvFinal);
         btnCalculate = findViewById(R.id.btnCalculate);
 
-        // Setup Spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.petrol_types,
@@ -61,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_home) {
-            return true; // Already on Home
+            return true;
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(this, AboutActivity.class));
             return true;
@@ -73,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         String priceStr = etPrice.getText().toString().trim();
         String usageStr = etUsage.getText().toString().trim();
 
-        // Check for empty fields
         if (priceStr.isEmpty() || usageStr.isEmpty()) {
             tvCost.setText("Please fill in all fields.");
             tvRebate.setText("");
@@ -81,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // Check for valid numbers
         double price, usage;
         try {
             price = Double.parseDouble(priceStr);
@@ -93,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // Check for zero or negative values
         if (price <= 0 || usage <= 0) {
             tvCost.setText("Please enter values greater than zero.");
             tvRebate.setText("");
@@ -106,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
         double totalCost = price * usage;
         double rebate = 0;
 
-        // Calculate BUDI rebate only for RON95 and eligible users
         if (petrol.equals("RON95") && rbYes.isChecked()) {
             rebate = usage * 1.99;
             tvRebate.setText("BUDI Rebate: RM " + String.format("%.2f", rebate));
